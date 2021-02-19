@@ -1,3 +1,9 @@
+# For pyenv, autoenv, poetry
+poetry.lock
+pyproject.toml
+.env
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
