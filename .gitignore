@@ -1,3 +1,7 @@
+# thumbnail
+thumbs.db
+.DS_Store
+
 # For pyenv, autoenv, poetry
 poetry.lock
 pyproject.toml
