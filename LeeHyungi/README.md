@@ -64,4 +64,21 @@ LeeHyungi / elevator.py 파일에 작성하였습니다.
 
 ## 선택과제 : 하노이 타워
 
-## pseudo code
+## <ins><b>pseudo code</b></ins>
+
+재귀호출을 통해서 원반을 옮기는 문제이다. <br/>
+강사님이 첨부해주신 위키피디아 문서를 통해 힌트를 얻어서 풀 수 있었다.
+<img src="img/210220_hanoi.png"/>
+
+<br/>
+
+# <ins><b>Project Status</b></ins>
+
+Issue #7 : <b><ins>[LeeHyungi0622] Solve Problem #7</ins></b>
+[https://github.com/ulgoon/fcwps-project1/issues/7](https://github.com/ulgoon/fcwps-project1/issues/7)
+
+<br/>
+
+# <ins><b>본 코드 작성</b></ins>
+
+LeeHyungi / hanoi.py 파일에 작성하였습니다.
