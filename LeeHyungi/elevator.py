@@ -2,6 +2,15 @@ from abc import ABCMeta, abstractmethod
 
 
 class ElevatorAbstract(metaclass=ABCMeta):
+
+    @abstractmethod
+    def __init__(self, _num, _src_floor, _dst_floor, _direction, _current_floor):
+        self.num = _num
+        self.src_floor = _src_floor
+        self.dst_floor = _dst_floor
+        self.direction = _direction
+        self.current_floor = _current_floor
+
     @abstractmethod
     def getIntoElevator(self):
         print("Elevator에 탑승했습니다.")
@@ -28,16 +37,8 @@ class ElevatorAbstract(metaclass=ABCMeta):
 
 class Elevator(ElevatorAbstract):
     def __init__(self, _num, _src_floor, _dst_floor, _direction):
-        # 엘리베이터의 호차 번호 설정
-        self.num = _num
-        # 엘리베이터의 시작층 설정
-        # 엘리베이터의 도착층 설정
-        self.src_floor = _src_floor
-        self.dst_floor = _dst_floor
-        # 엘리베이터의 초기 방향 설정
-        self.direction = _direction
-        # 현재 엘리베이터 층
-        self.current_floor = _src_floor
+        super(Elevator, self).__init__(
+            _num, _src_floor, _dst_floor, _direction, _src_floor)
         # 엘리베이터의 탑승자 리스트
         self.move_up_passenger_list = []
         # 엘리베이터의 탑승자 리스트
