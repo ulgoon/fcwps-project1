@@ -25,14 +25,9 @@ class ElevatorAbstract(metaclass=ABCMeta):
         print("현재 Elevator의 승객정보를 조회합니다.")
 
     @abstractmethod
-    def moveUp(self):
+    def move(self, _direction):
         print("=========================================")
-        print("엘리베이터가 위로 운전을 시작합니다.")
-
-    @abstractmethod
-    def moveDown(self):
-        print("=========================================")
-        print("엘리베이터가 아래로 운전을 시작합니다.")
+        print(f"엘리베이터가 {_direction}로 운행을 시작합니다.")
 
 
 class Elevator(ElevatorAbstract):
@@ -57,59 +52,56 @@ class Elevator(ElevatorAbstract):
         else:
             self.move_down_passenger_list.append(p)
 
-    # 탑승할때마다 해당 메서드를 실행시켜서 현재 탑승객 중에서
-    def moveUp(self):
-        super(Elevator, self).moveUp()
-        if self.move_up_passenger_list:
-            for p in self.move_up_passenger_list:
-                sf, df = p
-                # 만약에 현재 도착층보다 탑승객의 출발층이 높다면,
-                if self.dst_floor < sf:
-                    self.acc_num_of_move_up_floor += (sf - self.dst_floor)
-                    self.acc_num_of_move_up_floor += (df - sf)
-                    # 엘리베이터의 시작층과 도착층을 업데이트
-                    self.src_floor = sf
-                    self.dst_floor = df
-                    # 탑승객이 내리는 처리를 한다.
-                    # self.getOffElevator()
-                # 만약의 기존 도착층보다 탑승객의 도착층이 크다면,
-                elif self.dst_floor < df:
-                    # 새로운 도착층과 기존의 도착층의 차이를 누적 이동층수에 더해준다.
-                    self.acc_num_of_move_up_floor += (df - self.dst_floor)
-                    # 그리고 도착층 정보를 새롭게 업데이트 해준다.
-                    self.dst_floor = df
-                    # self.getOffElevator()
-                # 기존의 출발층과 도착층 사이에 있는 탑승객이라면 별도의 층수를 누적하지 않는다.
-                # else:
-                    # self.getOffElevator()
-
-    def moveDown(self):
-        super(Elevator, self).moveDown()
-        if self.move_down_passenger_list:
-            for p in self.move_down_passenger_list:
-                sf, df = p
-                # 만약에 현재 도착층보다 승객의 도착층이 더 낮은경우
-                if self.dst_floor > sf:
-                    self.acc_num_of_move_down_floor += (self.dst_floor - sf)
-                    self.acc_num_of_move_down_floor += (sf - df)
-                    # 엘리베이터의 시작층과 도착층을 업데이트
-                    self.src_floor = sf
-                    self.dst_floor = df
-                    # 탑승객이 내리는 처리를 한다.
-                    # self.getOffElevator()
-                # 만약에 기존 도착층보다 탑승객의 도착층이 더 작다면,
-                elif self.dst_floor > df:
-                    self.acc_num_of_move_down_floor += (self.dst_floor - df)
-                    # 도착층의 정보를 새롭게 업데이트 해준다.
-                    self.dst_floor = df
-                    # 탑승객이 내리는 처리를 한다.
-                    # self.getOffElevator()
-                # 기존의 출발층과 도착층 사이에 있는 탑승객이라면 별도의 층수를 누적하지 않는다.
-                # else:
-                    # self.getOffElevator()
-
-                    # 현재 층이 올라갈때마다 메서드를 확인해서 탑승자가 내리도록 처리한다.
-                    # 엘리베이터 탑승객 중에서 현재층이 도착층인 사람이 내리도록 하는 메서드
+    def move(self, _direction):
+        super(Elevator, self).move(_direction)
+        if _direction == "UP":
+            if self.move_up_passenger_list:
+                for p in self.move_up_passenger_list:
+                    sf, df = p
+                    # 만약에 현재 도착층보다 탑승객의 출발층이 높다면,
+                    if self.dst_floor < sf:
+                        self.acc_num_of_move_up_floor += (sf - self.dst_floor)
+                        self.acc_num_of_move_up_floor += (df - sf)
+                        # 엘리베이터의 시작층과 도착층을 업데이트
+                        self.src_floor = sf
+                        self.dst_floor = df
+                        # 탑승객이 내리는 처리를 한다.
+                        # self.getOffElevator()
+                    # 만약의 기존 도착층보다 탑승객의 도착층이 크다면,
+                    elif self.dst_floor < df:
+                        # 새로운 도착층과 기존의 도착층의 차이를 누적 이동층수에 더해준다.
+                        self.acc_num_of_move_up_floor += (df - self.dst_floor)
+                        # 그리고 도착층 정보를 새롭게 업데이트 해준다.
+                        self.dst_floor = df
+                        # self.getOffElevator()
+                    # 기존의 출발층과 도착층 사이에 있는 탑승객이라면 별도의 층수를 누적하지 않는다.
+                    # else:
+                        # self.getOffElevator()
+        elif _direction == "DOWN":
+            if self.move_down_passenger_list:
+                for p in self.move_down_passenger_list:
+                    sf, df = p
+                    # 만약에 현재 도착층보다 승객의 도착층이 더 낮은경우
+                    if self.dst_floor > sf:
+                        self.acc_num_of_move_down_floor += (
+                            self.dst_floor - sf)
+                        self.acc_num_of_move_down_floor += (sf - df)
+                        # 엘리베이터의 시작층과 도착층을 업데이트
+                        self.src_floor = sf
+                        self.dst_floor = df
+                        # 탑승객이 내리는 처리를 한다.
+                        # self.getOffElevator()
+                    # 만약에 기존 도착층보다 탑승객의 도착층이 더 작다면,
+                    elif self.dst_floor > df:
+                        self.acc_num_of_move_down_floor += (
+                            self.dst_floor - df)
+                        # 도착층의 정보를 새롭게 업데이트 해준다.
+                        self.dst_floor = df
+                        # 탑승객이 내리는 처리를 한다.
+                        # self.getOffElevator()
+                    # 기존의 출발층과 도착층 사이에 있는 탑승객이라면 별도의 층수를 누적하지 않는다.
+                    # else:
+                        # self.getOffElevator()
 
     def getOffElevator(self):
         super(Elevator, self).getOffElevator()
@@ -150,7 +142,7 @@ def elevatorCommon(elevator, passenger):
     fd = "UP" if passenger in go_up_p else "DOWN"
     elevator.setDirection(fd)
     elevator.getIntoElevator(fd, passenger)
-    elevator.moveUp() if fd == "UP" else elevator.moveDown()
+    elevator.move(fd)
     elevator.getCurrentPassengerInfo()
 
 # 1호차, 2호차의 객체를 전달받는다.
