@@ -127,11 +127,7 @@ while True:
         break
     if i == 0:
         elevators[1].Force_move(4) # 2호기의 처음 도착층 설정
-<<<<<<< HEAD
     print('\n{} turn'.format(i))   # 턴을 출력
-=======
-    print('\n{} turn'.format(i))   # 턴 출력
->>>>>>> 08c5f41a371583161e09fb5f8787a83dc5988c92
     distributor.Turn(elevators)
     i += 1
 
