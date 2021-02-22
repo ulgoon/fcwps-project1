@@ -11,4 +11,3 @@ def hanoi_tower(disk_num, first, third, seccond):
 
 hanoi_tower(3, 'First', 'Third', 'Seccond')
      # 원반갯수 , 시작점, 도착점, 이동점
-
