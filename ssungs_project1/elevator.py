@@ -126,16 +126,9 @@ i = 1
 while True:
     if not check_state(distributor, elevators):
         break
-<<<<<<< HEAD
     if i == 1:
         elevators[1].force_move(4) # 2호기의 처음 도착층 설정
     print('\n{} turn'.format(i))   # 턴을 출력
     distributor.turn(elevators)
-=======
-    if i == 0:
-        elevators[1].Force_move(4) # 2호기의 처음 도착층 설정
-    print('\n{} turn'.format(i))   # 턴을 출력
-    distributor.Turn(elevators)
->>>>>>> 0dbbdc556194c6971c5983d2427e4744a8761623
     i += 1
 
