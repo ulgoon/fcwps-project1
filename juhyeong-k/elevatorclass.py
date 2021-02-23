@@ -93,13 +93,14 @@ Elevator_2 = Elevator()
 while len(passengers) > 0:
     up_passengers = [person for person in passengers[:10] if person[0] < person[1]]
     down_passengers = [person for person in passengers[:10] if person[0] > person[1]]
-    print(up_passengers)
-    print(down_passengers)
+    print(f"up_passengers: {up_passengers}")
     Elevator_1.get_min_max(up_passengers)
-    Elevator_2.get_min_max(down_passengers)
     Elevator_1.move_to_passenger1()
-    Elevator_2.move_to_passenger2()
     Elevator_1.move_up()
+    print("-")
+    print(f"down_passengers: {down_passengers}")
+    Elevator_2.get_min_max(down_passengers)
+    Elevator_2.move_to_passenger2()
     Elevator_2.move_down()
     print("\n")
     passengers = passengers[10:]
