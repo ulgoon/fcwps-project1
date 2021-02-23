@@ -87,20 +87,20 @@ class Elevator(Elevators):
 # 엘리베이터 구현
 passengers = [(6, 12), (4, 13), (11, 3), (9, 2), (11, 12), (3, 9), (14, 8), (1, 7), (11, 9), (14, 16), (2, 15), (2, 9), (8, 16), (8, 9), (3, 10), (5, 4), (13, 9), (4, 6), (13, 7), (4, 8), (5, 3), (12, 14), (10, 13), (6, 12), (1, 7), (9, 2), (13, 11), (1, 14), (11, 8), (15, 12), (3, 15), (10, 3), (4, 1), (7, 1), (15, 8), (10, 16), (9, 3), (14, 13), (8, 13), (16, 9), (10, 7), (1, 6), (16, 13), (5, 3), (1, 12), (1, 7), (12, 3), (13, 6), (12, 15), (15, 6)]
 
-e1 = Elevator()
-e2 = Elevator()
+Elevator_1 = Elevator()
+Elevator_2 = Elevator()
 
 while len(passengers) > 0:
     up_passengers = [person for person in passengers[:10] if person[0] < person[1]]
     down_passengers = [person for person in passengers[:10] if person[0] > person[1]]
     print(up_passengers)
     print(down_passengers)
-    e1.get_min_max(up_passengers)
-    e2.get_min_max(down_passengers)
-    e1.move_to_passenger1()
-    e2.move_to_passenger2()
-    e1.move_up()
-    e2.move_down()
+    Elevator_1.get_min_max(up_passengers)
+    Elevator_2.get_min_max(down_passengers)
+    Elevator_1.move_to_passenger1()
+    Elevator_2.move_to_passenger2()
+    Elevator_1.move_up()
+    Elevator_2.move_down()
     print("\n")
     passengers = passengers[10:]
-print(f"elevator's total move: {e1.move_counts + e2.move_counts}")
+print(f"elevator's total move: {Elevator_1.move_counts + Elevator_2.move_counts}")
